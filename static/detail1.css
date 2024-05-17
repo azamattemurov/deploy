@@ -1,0 +1,20 @@
+
+
+body{
+       content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("https://img.freepik.com/free-vector/digital-futuristic-earth-technology-background-with-glowing-lights_1017-23327.jpg?w=2000&t=st=1715898031~exp=1715898631~hmac=d7d11d3783e4909207f8d4f73c5e7b80d13791aa114bf399cd21ba1fab227c14"), #000;
+         background-position: center;
+        background-size: cover;
+    }
+
+h4, h2{
+        color:white;
+
+}
+th, tr, ul, p, li{
+        color:white;
+}
+https://img.freepik.com/free-vector/global-technology-earth-news-bulletin-background_1017-33687.jpg?size=626&ext=jpg&ga=GA1.1.2142553409.1714550130&semt=ais_user_b

@@ -1,0 +1,146 @@
+{% load static %}
+
+<head>
+<title>Habar malumotlari 📂</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin:  0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 0px 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        form {
+             margin-top: 0;
+             padding: 0px 5px
+
+        }
+        section img {
+            float: left;
+            margin-right: 20px;
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        section div {
+            float: left;
+        }
+
+        section button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        section button:hover {
+            background-color: #555;
+        }
+
+    </style>
+</head>
+<link rel="stylesheet" href="/static/detail1.css">
+<div class="card-body">
+
+<body>
+    <nav>
+        <ul>
+            <li style="padding: 22px"><a class="btn btn-outline-success" href="../../list">Bosh sahifa</a></li>
+        </ul>
+    </nav>
+<main>
+    <section>
+
+        <div>
+            <img src="{{ news.image.url }}" width="220" height="220" alt="{{news.image}}">
+        </div>
+        <div>
+            <p><strong>Nomi : </strong>{{ news.title }}</p>
+            <p><strong>Malumoti : </strong>{{ news.description }}</p>
+            <p><strong>Yili : </strong>{{ news.year }}</p>
+        </div>
+    </section>
+    <form method="post">
+    {% csrf_token %}
+        <label>
+            <textarea rows="2" name="comment"></textarea>
+        </label>
+        {% if request.user.is_authenticated %}
+                     <input style="padding: 0px 0px" type="submit" class="btn btn-outline-info" value="Comment">
+        {% else %}
+            <a type="button"  class="btn btn-outline-danger" href="/users:login/"></a>
+        {% endif %}
+
+    </form>
+    <h2 style="padding: 0px 5px">Comments</h2>
+    {% if news.comments.all %}
+        <ul>
+            {% for i in news.comments.all %}
+                <li>
+                    <strong>{{ i.user.username }}</strong> :
+                    {{ i.text }} ... <br>
+                    <small>{{ i.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <p style="padding: 0px 5px">No comments yet.</p>
+{% endif %}
+</main>
+</body>
+</div>
