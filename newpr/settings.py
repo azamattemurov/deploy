@@ -121,7 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTS'
+TIME_ZONE = 'Asia/Tashkent'
+
 
 
 #new
