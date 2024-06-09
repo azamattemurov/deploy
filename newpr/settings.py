@@ -26,6 +26,11 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 load_dotenv()
 SECRET_KEY = config('SECRET_KEY')
 
+if not SECRET_KEY:
+    raise ValueError("The SECRET_KEY setting must not be empty.")
+else:
+    print(f"SECRET_KEY: {SECRET_KEY}")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -118,7 +123,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Tashkent/Asia'
+TIME_ZONE = 'UTS'
+
 
 USE_I18N = True
 
