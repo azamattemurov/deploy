@@ -65,10 +65,10 @@ class ContactView(FormView):
     success_url = reverse_lazy('news:thank_you')
 
     def form_valid(self, form):
+        from django.core.mail import send_mail
         name = form.cleaned_data['name']
         email = form.cleaned_data['email']
         message = form.cleaned_data['message']
-        from django.core.mail import send_mail
         send_mail(
             'Sizga taklifim bor !',
             f'Name: {name}\nEmail: {email}\nMessage: {message}',
